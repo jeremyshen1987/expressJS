@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="./index.css" rel="stylesheet">
+  <title>Welcome page</title>
+</head>
+<body>
+
+  <div class="sidebar">
+    <div>Message</div>
+    <div>Board</div> 
+  </div>
+
+  <div class="main_container">
+    <% if (!user) {%>
+
+      <% msg.map(m => m.post_body = '*** Login to reveal the content ***') %>
+
+      <div class="header">
+        <a href="/login">Login </a>
+        <span style="font-size: 3rem; margin: 5px 15px; line-height: 35px;">/</span>
+        <a href="/signup" > Signup</a>
+      </div>
+
+
+    <% } else { %>
+
+      <div class="header">
+        <div>WELCOME BACK &nbsp; <%= user.username %></div>
+        <div style="margin-left: auto;">
+          <a href="/logout">Log Out</a>
+        </div>
+      </div>
+      <div class="header2">
+        <a href="/new">Post a message</a>
+      </div>
+
+
+
+    <%}%>
+
+    <% if(msg) {%>
+
+      
+      <% msg.forEach(item => {%>
+        <li>
+          <div class="post_header">
+            <h2>
+              <%= item.post_title %>
+            </h2>
+            <% if(user && user.username === item.username) { %>
+              <form action="/delete" method="post">
+                <input type="hidden" name="id" value="<%= item._id%>">
+                <input type="hidden" name="username" value="<%= item.username%>">
+                <button type="submit">Delete</button>
+              </form>
+            <% } %>
+
+          </div>
+
+          <div class="author">
+            <span style="font-weight: 900;"><%= item.username %></span>
+            <span style="color: #767676;"><%= item.date %></span>  
+
+
+          </div>
+          <p>
+            <%= item.post_body %>
+          </p>
+        </li>
+      <%})%>
+
+    <% } %>
+
+
+  </div>
+
+  </body>
+</html>
