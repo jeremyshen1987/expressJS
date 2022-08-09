@@ -108,4 +108,4 @@ app.post("/new", (req, res, next) => {
 })
 
 
-app.listen(5000, () => console.log("app listening on port 5000!"));
+app.listen(process.env.PORT || 5000, () => console.log("app listening on port 5000!"));
