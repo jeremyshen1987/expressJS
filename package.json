@@ -2,22 +2,29 @@
   "name": "passport",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" ",
-    "start": "node app.js"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
+    "express-flash": "^0.0.2",
     "express-session": "^1.17.3",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.6",
     "nodemon": "^2.0.19",
     "passport": "^0.6.0",
+    "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0"
   }
 }
